@@ -1,12 +1,24 @@
+from enum import Enum, auto
 
 DEBUG_MODE = False
 DEBUG_MODE = True
 
 
+class NodeStatus(Enum):
+    START = auto()
+    END = auto()
+    MIDDLE = auto()
+
 class Chiton
+    first_node = True
     def __init__(self, risk_level):
         self.risk_level = risk_level
         self.neighbors = []
+        if Chiton.first_node:
+            self.status = NodeStatus.START
+        else:
+            self.status = NodeStatus.MIDDLE
+
 
     def connect(self, other):
         self.neighbors.append(other)
@@ -14,23 +26,32 @@ class Chiton
 
 class Cavern():
     def __init__(self):
-        pass
+        self.start_node = None
+        self.end_node = None
+        self.nodes = []
 
+self.nodes = []
     def parse(self, f):
         previous_row = []
-        current_row = []
         for l in f.readlines():
             previous_chiton = None
+            current_row = []
             l = l.strip()
 
             for risk_level in l:
                 c = Chiton(int(risk_level))
                 current_row.append(c)
 
-                if not previous_chiton:
-                    previous_chiton = c
-                else:
+                if previous_chiton:
                     c.connect(previous_chiton)
+                previous_chiton = c
+
+            if previous_row:
+                for above, below in zip(previous_row, current_row):
+                    above.connect(below)
+            
+            previous_row = current_row
+        c.status = NodeStatus.END
 
     def show_answer_p1(self):
         pass
