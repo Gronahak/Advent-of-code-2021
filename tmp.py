@@ -1,5 +1,111 @@
-a = "FG"
+from DAY_18.snailfishadder import ListRepresentation
+a = [
+        [
+            [
+                [
+                    4,
+                    0
+                ],
+                [
+                    5,
+                    0
+                ]
+            ],
+            [
+                [
+                    [
+                        4,
+                        5
+                    ],
+                    [
+                        2,
+                        6
+                    ]
+                ],
+                [
+                    9,
+                    5
+                ]
+            ]
+        ],
+        [
+            7,
+            [
+                [
+                    [
+                        3,
+                        7
+                    ],
+                    [
+                        4,
+                        3
+                    ]
+                ],
+                [
+                    [
+                        6,
+                        3
+                    ],
+                    [
+                        8,
+                        8
+                    ]
+                ]
+            ]
+        ]
+    ]
+a = [
+        [
+            [
+                [
+                    4,
+                    0
+                ],
+                [
+                    5,
+                    4
+                ]
+            ],
+            [
+                [
+                    7,
+                    7
+                ],
+                [
+                    0,
+                    13
+                ]
+            ]
+        ],
+        [
+            7,
+            [
+                [
+                    [
+                        3,
+                        7
+                    ],
+                    [
+                        4,
+                        3
+                    ]
+                ],
+                [
+                    [
+                        6,
+                        3
+                    ],
+                    [
+                        8,
+                        8
+                    ]
+                ]
+            ]
+        ]
+    ]
 
-f, g = a
 
-print(f, g)
+lr = ListRepresentation()
+lr.parse_from_string(str(a).strip().replace(" ", ""))
+print(lr.numbers[:len(lr.numbers)//2])
+print(lr.numbers[len(lr.numbers)//2:])

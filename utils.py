@@ -51,4 +51,4 @@ def delete_dir(day_):
 
 
 if __name__ == '__main__':
-    create_and_populate_folder(15)
+    create_and_populate_folder(18)
